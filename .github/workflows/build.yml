@@ -1,0 +1,16 @@
+name: macOS Application CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Swift Application
+        run: swiftc -o hello main.swift
+
+      - name: Run Swift Application
+        run: ./hello
