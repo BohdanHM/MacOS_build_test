@@ -25,7 +25,7 @@ jobs:
           hdiutil create MyApp-${{ github.run_number }}.dmg -volname "MyApp" -srcfolder MyApp.app
 
       - name: Upload DMG
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MyApp-${{ github.run_number }}.dmg
           path: MyApp-${{ github.run_number }}.dmg
