@@ -20,7 +20,7 @@ jobs:
 
       - name: Create DMG
         run: |
-          mkdir MyApp.app/Contents/MacOS
+          mkdir -p MyApp.app/Contents/MacOS
           mv hello MyApp.app/Contents/MacOS/
           hdiutil create MyApp-${{ github.run_number }}.dmg -volname "MyApp" -srcfolder MyApp.app
 
