@@ -1,6 +1,12 @@
 name: macOS Application CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -9,8 +15,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build Swift Application
-        run: swiftc -o hello main.swift
 
-      - name: Run Swift Application
-        run: ./hello
+    - name: Build Swift Application
+      run: swiftc -o hello main.swift
+
+    - name: Create DMG
+      run: |
+        mkdir MyApp.app/Contents/MacOS
+        mv hello MyApp.app/Contents/MacOS/
+        hdiutil create MyApp-${{ github.run_number }}.dmg -volname "MyApp" -srcfolder MyApp.app
+
+    - name: Upload DMG
+      uses: actions/upload-artifact@v2
+      with:
+        name: MyApp-${{ github.run_number }}.dmg
+        path: MyApp-${{ github.run_number }}.dmg
