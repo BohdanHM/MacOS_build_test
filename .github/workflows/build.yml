@@ -27,8 +27,9 @@ jobs:
           mv hello MyApp.app/Contents/MacOS/
           hdiutil create MyApp-${{ github.run_number }}.dmg -volname "MyApp" -srcfolder MyApp.app
 
-      - name: Upload DMG
-        uses: actions/upload-artifact@v3
-        with:
-          name: MyApp-${{ github.run_number }}-${{ matrix.os }}.dmg
-          path: MyApp-${{ github.run_number }}.dmg
+  upload_artifact:
+    - name: Upload DMG
+      uses: actions/upload-artifact@v3
+      with:
+        name: MyApp-${{ github.run_number }}-${{ matrix.os }}.dmg
+        path: MyApp-${{ github.run_number }}.dmg
