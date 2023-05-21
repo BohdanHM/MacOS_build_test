@@ -21,7 +21,7 @@ jobs:
       - name: Build Swift Application
         run: |
           xcode-select -p
-          ls 'xcode-select -p/Platforms/MacOSX.platform/Developer/SDKs
+          ls `xcode-select -p`/Platforms/MacOSX.platform/Developer/SDKs
         #swiftc -o hello main.swift
 
       # - name: Create DMG
