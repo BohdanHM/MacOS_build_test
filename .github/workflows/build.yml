@@ -23,7 +23,15 @@ jobs:
         run: |
           # xcode-select -p
           # ls `xcode-select -p`/Platforms/MacOSX.platform/Developer/SDKs
+          mkdir depot_tools
+          cd depot_tools
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          echo "${{ github.workspace }}/depot_tools" >> $GITHUB_PATH
+          cd ../
+          mkdir chromium && cd chromium
+          caffeinate fetch chromium
           pwd
+          ls -la
 
         #swiftc -o hello main.swift
 
