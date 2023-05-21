@@ -12,7 +12,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-11.0, macos-12, macos-latest]
+        os: [macos-latest]
+        # os: [macos-11.0, macos-12, macos-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -20,8 +21,10 @@ jobs:
 
       - name: Build Swift Application
         run: |
-          xcode-select -p
-          ls `xcode-select -p`/Platforms/MacOSX.platform/Developer/SDKs
+          # xcode-select -p
+          # ls `xcode-select -p`/Platforms/MacOSX.platform/Developer/SDKs
+          pwd
+
         #swiftc -o hello main.swift
 
       # - name: Create DMG
