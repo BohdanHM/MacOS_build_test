@@ -23,12 +23,13 @@ jobs:
         run: |
           pwd
           mkdir depot_tools
+      - name: Clone Depot Tools
+        run: |
           cd depot_tools
-          ls ${{ github.workspace }}
-      # - name: Build Swift Application
-      #   run: |
-      #     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-      #     echo "${{ github.workspace }}/depot_tools" >> $GITHUB_PATH
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          cd ../
+          ls -la ${{ github.workspace }}/depot_tools
+          echo "${{ github.workspace }}/depot_tools" >> $GITHUB_PATH
       #     cd ../
       #     mkdir chromium && cd chromium
       #     caffeinate fetch chromium
